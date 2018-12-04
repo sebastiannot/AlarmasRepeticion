@@ -3,7 +3,7 @@ from sqlalchemy import (create_engine, Column, Date, Integer, ForeignKey,
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-engine = create_engine('mysql+mysqlconnector://root:tsensor@localhost/test')
+engine = create_engine('mysql+mysqlconnector://HJ76u1YF7m:ZL1LDdUYed@remotemysql.com/HJ76u1YF7m')
 Base = declarative_base()
 
 class Usuario(Base):
@@ -21,4 +21,3 @@ class AlarmasRepeticion(Base):
     nombre = Column(String(120))
     email = Column(String(120))
 
-#Base.metadata.create_all(engine)
