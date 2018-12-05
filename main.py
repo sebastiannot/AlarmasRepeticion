@@ -1,20 +1,23 @@
 from datetime import date
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Usuario ,AlarmasRepeticion
+from models import Usuario,UsuarioLocal,SensorAsignacion,Sensor,AlarmasRepeticion
+from pprint import pprint
+import time,datetime
 
+engine = create_engine('mysql+mysqlconnector://root:pass@localhost/bd')
 
-engine = create_engine('mysql+mysqlconnector://HJ76u1YF7m:ZL1LDdUYed@remotemysql.com/HJ76u1YF7m')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-
-def buscar_alarmas(session):
-    alarmas_repeticion = session.query(AlarmasRepeticion).all()
-    return alarmas_repeticion
-
-lista_alarmas = buscar_alarmas(session)
-
-for items in lista_alarmas:
-        print(items.id)
+def main():
+  usuario = session.query(Usuario).filter(Usuario.login=='csalinas').first()
+  print usuario.login
+  
+  #alarma = session.query(AlarmasRepeticion).filter(AlarmasRepeticion.id_usuario_local==1).first()
+  #print(alarma.usuario_local.usuario.login)
+  
+ 
+if __name__== "__main__":
+  main()
 
